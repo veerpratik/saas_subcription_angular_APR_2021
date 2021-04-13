@@ -14,9 +14,26 @@ export class SubcriptionService {
   
   }
 
+
   private baseUrl ="http://localhost:8000/";
   getProdList():Observable<any> {
-    let headers : HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+   let t = localStorage.getItem('access_token')
+    let headers : HttpHeaders = new HttpHeaders({ 'Accept': 'application/json',
+    'Content-Type': 'application/json; charset=UTF-8',
+    'Authorization': 'Token ' + t});
     return this.httpClient.get(this.baseUrl + 'api/v1/manager/checkout/', { headers:headers });
   }
+
+
+  
+  cancelSub():Observable<any> {
+   let t = localStorage.getItem('access_token')
+    let headers : HttpHeaders = new HttpHeaders({ 'Accept': 'application/json',
+    'Content-Type': 'application/json; charset=UTF-8',
+    'Authorization': 'Token ' + t});
+    return this.httpClient.get(this.baseUrl + 'api/v1/manager/cancel-sub/', { headers:headers });
+  }
+
+
+
 }

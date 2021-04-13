@@ -1,29 +1,49 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Saas Subcription</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>Saas Subcription</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/style.css" type = "text/css">
-   <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <script src="https://js.stripe.com/v3/"></script>
 
-   <script src="assets/js/dashboard.js"></script>
+    <!-- <script src="assets/js/dashboard.js"></script> -->
 </head>
+
 <body>
-  <app-root></app-root>
-  
-
-  
-    
+    <app-root></app-root>
 
 
-    
+    <script>
+        function planSelect(name, price, priceId) {
+            var inputs = document.getElementsByTagName('input');
 
-    
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].checked = false;
+                if (inputs[i].name == name) {
+
+                    inputs[i].checked = true;
+                }
+            }
+
+            var n = document.getElementById('plan');
+            var p = document.getElementById('price');
+            var pid = document.getElementById('priceId');
+            n.innerHTML = name;
+            p.innerHTML = price;
+            pid.innerHTML = priceId;
+            document.getElementById("submit").disabled = false;
+
+
+        }
+    </script>
+
 
 </body>
+
 </html>

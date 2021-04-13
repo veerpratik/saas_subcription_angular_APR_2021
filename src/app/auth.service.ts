@@ -21,16 +21,25 @@ export class AuthService {
     let headers :HttpHeaders = new HttpHeaders({ 'Content-Type':'application/json'});
     return this.httpClient.post(this.baseurl +'api/v1/login/',loginPayload, {headers:headers}).pipe(map(data =>{
       this.localStorageService.store('loginData',data);
+      localStorage.setItem('access_token',data['access'])
+
+      console.log(localStorage.getItem('access_token'))
+
+      // console.log('from local strograe service',data)
       return true;
   
     }));
   }
 
 
+logout() {
+    
+    localStorage.removeItem('access_token');
+}
 
  //isAuthenticated() method to check whether user has logged in or not
   isAuthenticated():boolean{
-    return this.localStorageService.retrieve('loginData') !=null;
+    return localStorage.getItem('access_token') !=null;
   }
 
 
