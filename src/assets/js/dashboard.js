@@ -2,7 +2,7 @@
 
 stripeElements();
 
-function stripeElements() {
+function stripeElements(t) {
     stripe = Stripe('pk_test_51IeCU1SH3n5iwFG637NzZXgIONmHYWy6dsdSYMXxYhAwJacDNMOdGTb7gmJAjPRvpbxm7Dk2MVCz9mGb5atVChMO00DYGb6CDL');
 
 
@@ -66,19 +66,19 @@ function stripeElements() {
 
 
             // create new payment method & create subscription
-            createPaymentMethod({ card });
+            createPaymentMethod({ card }, t);
         });
     }
 
 }
 
 
-function createPaymentMethod({ card }) {
+function createPaymentMethod({ card }, t) {
 
     // Set up payment method for recurring usage
     let billingName = '{{user.username}}';
     console.log('createPayment called...........')
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
 
     stripe
         .createPaymentMethod({
@@ -96,10 +96,15 @@ function createPaymentMethod({ card }) {
                     price_id: document.getElementById("priceId").innerHTML,
                     payment_method: result.paymentMethod.id,
                 };
-                fetch("/create-sub/", {
+                fetch("http://127.0.0.1:8000/api/v1/manager/create-sub/", {
                     method: 'POST',
                     headers: {
-                        'X-CSRFToken': csrftoken
+
+
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json; charset=UTF-8',
+                        'Authorization': 'Token ' + t
+
                     },
                     credentials: 'same-origin',
                     body: JSON.stringify(paymentParams),

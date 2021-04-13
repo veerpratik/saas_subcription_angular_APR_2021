@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {SubcriptionService} from 'src/app/subcription.service'
+import {SubcriptionService} from 'src/app/subcription.service';
 import { AuthService } from 'src/app/auth.service';
 
 
@@ -30,7 +30,12 @@ export class CheckoutComponent implements OnInit {
 
     this.GetProdList()
 
-    console.log(document.getElementById('display-cart'))
+
+    console.log('subcribe_button', document.getElementById('subcribe_button'))
+    console.log('subcribe button', document.getElementById('button-text'))
+    console.log('card-error',  document.getElementById('mycard-errors'))
+
+   
     
   }
 

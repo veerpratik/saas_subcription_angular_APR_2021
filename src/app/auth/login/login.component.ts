@@ -39,13 +39,12 @@ export class LoginComponent implements OnInit
   onSubmit() {
     this.loginPayload.email = this.loginForm.get('email').value;
     this.loginPayload.password = this.loginForm.get('password').value;
-    console.log(this.loginPayload);
+    
 
 
     this.authService.login(this.loginPayload).subscribe(data => {
-      // console.log(data);
-      // console.log("welcome");
-      this.router.navigateByUrl("/checkout");
+    
+      this.router.navigateByUrl("/subcribe");
 
     
     } , error =>{

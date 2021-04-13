@@ -9,8 +9,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { HttpClientModule } from '@angular/common/http';
-// import { RegisterSuccessComponent } from './register-success/register-success.component';
+import { RegisterSuccessComponent } from './register-success/register-success.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { SubcriptionComponent } from './subcription/subcription.component';
+import { CancelSubcriptionComponent } from './cancel-subcription/cancel-subcription.component';
 
 
 
@@ -20,8 +22,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
     // HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    // RegisterSuccessComponent,
+    RegisterSuccessComponent,
     CheckoutComponent,
+    SubcriptionComponent,
+    CancelSubcriptionComponent,
    
   ],
   imports: [
@@ -34,9 +38,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
     
     RouterModule.forRoot([
       
-      { path:'',component:LoginComponent },
-      { path:'register',component:RegisterComponent },
-      {path:'checkout', component:CheckoutComponent}
+      {path:'',component:LoginComponent },
+      {path:'register',component:RegisterComponent },
+      {path:'checkout', component:CheckoutComponent},
+      {path:'subcribe', component:SubcriptionComponent},
+      {path:'complete', component:RegisterSuccessComponent},
+      {path:'cancel-subcription', component:CancelSubcriptionComponent}
      
 
     ]),

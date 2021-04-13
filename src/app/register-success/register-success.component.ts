@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register-success',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterSuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
+
+
+
+    if( this.authService.isAuthenticated()){
+
+      
+   
+  
+      }
+      else{
+  
+        this.router.navigate(['/'])
+  
+      }
+  }
+
+
+  logout(){
+
+    
+
+    this.authService.logout()
+    this.router.navigateByUrl("/");
+
   }
 
 }
